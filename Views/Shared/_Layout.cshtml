@@ -173,12 +173,12 @@
                             <a asp-controller="TrinerRequestForm" asp-action="MyForm" class="btn btn-primary btn-round btn-lg">Add a Trainer Request</a>
                         </div>
                     }
-                    @if (ViewBag.ShowProblem != null && User.Identity.IsAuthenticated)
+                    @if (ViewBag.ShowProblem != null && (User.Identity.IsAuthenticated && User.IsInRole("User")))
                     {
                         <br />
                         <a asp-controller="Problem" asp-action="ProblemForm" class="btn  btn-lg btn-round btn-primary ">Add</a>
                     }
-                    @if (ViewBag.ShowQuiz != null && User.Identity.IsAuthenticated)
+                    @if (ViewBag.ShowQuiz != null && (User.Identity.IsAuthenticated && User.IsInRole("User")))
                     {
                         <br />
                         <a asp-controller="Problem" asp-action="QuizForm" class="btn  btn-lg btn-round btn-primary ">Add</a>

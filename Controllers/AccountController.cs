@@ -160,8 +160,8 @@ namespace MyCompany.Controllers
             MailModel mail = new MailModel();
             mail.ToMail = new System.Collections.Generic.List<string>();
             mail.ToMail.Add(model.Email);
-            mail.Subject = "User Deleted";
-            mail.Body = "Your account has been deleted";
+            mail.Subject = "Account Ban";
+            mail.Body = $"Dear {model.Name} {model.SurName}, This email is to notify you that your account has been deleted. If you want to know the specific reason of the denial feel free to give us a call with the number provided on our website";
 
             MailSenderService.SendMail(mail);
 
@@ -230,8 +230,8 @@ namespace MyCompany.Controllers
             MailModel mail = new MailModel();
             mail.ToMail = new System.Collections.Generic.List<string>();
             mail.ToMail.Add(model.Email);
-            mail.Subject = "User Acceptance";
-            mail.Body = "Your account has been accepted";
+            mail.Subject = "Account approval";
+            mail.Body = $"Dear {model.Name} {model.SurName}, This email is to notify you that your account has been approved, you're free to login now and enjoy all the features of the website";
 
             MailSenderService.SendMail(mail);
 
@@ -251,7 +251,6 @@ namespace MyCompany.Controllers
 
             if (Searched)
             {
-                ViewBag.ShowAddQuestion = true;
                 model = FindedUsers;
                 Searched = false;
 
@@ -360,7 +359,7 @@ namespace MyCompany.Controllers
             FindedUsers.SearchText = SearchText;
 
             SearchText = SearchText.ToLower();
-            List<RegistrationRequest> questions = _context.RegistrationRequests.ToList();
+            List<RegistrationRequest> users = _context.RegistrationRequests.ToList();
             List<RegistrationRequest> result = new List<RegistrationRequest>();
 
             if (FindedUsers.Users == null)
@@ -373,7 +372,7 @@ namespace MyCompany.Controllers
                 FindedUsers.Users.Clear();
             }
 
-            foreach (var item in questions)
+            foreach (var item in users)
             {
                 if (item.Name.ToLower().Contains(SearchText) || item.SurName.ToLower().Contains(SearchText))
                 {

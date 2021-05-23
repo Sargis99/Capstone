@@ -70,7 +70,7 @@ namespace MyCompany.Repository
 
                 if (newRequest.Accept == false)
                 {
-                    string strMsg = "Your application is under review. We will look it as soon as possible. ";
+                    string strMsg = "Your registration request is under review. We will look it as soon as possible. ";
                     script = "<script language=\"javascript\" type=\"text/javascript\">alert('" + strMsg + "'); window.location='Registration'; </script>";
                     return script;
 

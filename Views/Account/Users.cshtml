@@ -8,11 +8,11 @@
 <div class="row">
 
     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Search", "Account", FormMethod.Get, new { enctype = "multipart/form-data" }))
         {
             @if (string.IsNullOrEmpty(Model.SearchText))
             {
-                @Html.TextBoxFor(model => Model.SearchText, new { @class = "form-control", @placeholder = "Search user", @Style = "margin-top:10%"})
+                @Html.TextBoxFor(model => Model.SearchText, new { @class = "form-control", @placeholder = "Search user", @Style = "margin-top:10%" })
                 @Html.ValidationMessageFor(model => model.SearchText)
             }
             else
@@ -50,9 +50,9 @@
                         </a>
                         <p class="card-description">
                             @item.Email
-                            @userType
-
                         </p>
+                        
+                        <p>@userType</p>
                         <a asp-action="CreateChatRoom" asp-controller="Messenger" asp-route-Id="@item.Id" class="btn btn-primary btn-round" type="button" rel="tooltip" data-placement="left" title="Connect via chat" class="btn btn-link">Connect via chat</a>
                     </div>
                 </div>

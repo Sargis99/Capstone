@@ -130,6 +130,8 @@ namespace MyCompany.Controllers
                 if (user == null)
                 {
                     _context.CharRooms.Remove(item);
+                    _context.SaveChanges();
+                    continue;
                 }
 
                 ChatRoomsModel model = new ChatRoomsModel();
@@ -137,7 +139,8 @@ namespace MyCompany.Controllers
                 model.ToUserUserName = user.Email;
                 model.Image = user.Image;
                 model.ChatRoomData = item.LastModifiedOn;
-                result.Add(model);
+                result.Insert(0, model);
+
             }
 
             foreach (var item in foundInToIdRoom)
@@ -147,6 +150,8 @@ namespace MyCompany.Controllers
                 if (user == null) 
                 {
                     _context.CharRooms.Remove(item);
+                    _context.SaveChanges();
+                    continue;
                 }
 
                 ChatRoomsModel model = new ChatRoomsModel();
@@ -155,7 +160,7 @@ namespace MyCompany.Controllers
                 model.Image = user.Image;
                 model.ChatRoomData = item.LastModifiedOn;
 
-                result.Add(model);
+                result.Insert(0,model);
             }
 
             //return View(result);
